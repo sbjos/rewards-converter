@@ -1,9 +1,5 @@
-import javax.swing.text.ComponentView;
-
 public class RewardValue {
-
-    private double cashValue;
-    private int milesValue;
+    private final double cashValue;
     private final double CONVERSION_RATE = 0.0035;
 
     public RewardValue(double cashValue) {
@@ -11,15 +7,15 @@ public class RewardValue {
     }
 
     public RewardValue(int milesValue) {
-        this.milesValue = milesValue;
+        this.cashValue = milesToCash(milesValue);
     }
 
     public double getCashValue() {
-        return milesToCash(milesValue);
+        return cashValue;
     }
 
-    public double getMilesValue() {
-        return cashToMiles(cashValue);
+     public double getMilesValue() {
+        return cashToMiles(this.cashValue);
     }
 
     public int cashToMiles(double cash) {
